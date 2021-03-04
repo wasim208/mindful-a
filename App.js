@@ -1,10 +1,20 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import ChatScreen from "./components/ChatScreen";
+import * as Calendar from "expo-calendar";
+
+import Questionnaire from "./components/Questionnaire";
 
 export default function App() {
-  return <ChatScreen></ChatScreen>;
+  useEffect(() => {
+    (async () => {
+      const { status } = await Calendar.requestCalendarPermissionsAsync();
+      if (status === "granted") {
+        console.log("Access granted!");
+      }
+    })();
+  }, []);
+  return <Questionnaire />;
 }
 
 const styles = StyleSheet.create({});

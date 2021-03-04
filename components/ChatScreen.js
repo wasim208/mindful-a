@@ -1,10 +1,36 @@
-import React from "react";
-import { Text, View, StyleSheet, Image, TextInput } from "react-native";
+import React, { useState } from "react";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  TextInput,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Screen from "./Screen";
+import Message from "./Message";
+
+var id = 3;
+
+const initialChats = [
+  {
+    _id: "1",
+    user: false,
+    msg: "Hello there, how can I help you?",
+  },
+  {
+    _id: "2",
+    user: true,
+    msg: "Hello Doctor",
+  },
+];
 
 function ChatScreen(props) {
+  const [chats, setChats] = useState(initialChats);
+  const [message, setMessage] = useState("");
   return (
     <Screen style={styles.container}>
       <View style={styles.navtigation}>
@@ -20,18 +46,41 @@ function ChatScreen(props) {
           color="white"
         />
       </View>
-      <View style={styles.chatSection}></View>
+      <View style={styles.chatSection}>
+        <FlatList
+          data={chats}
+          keyExtractor={(chat) => chat._id}
+          renderItem={({ item }) => <Message chat={item} />}
+        />
+      </View>
       <View style={styles.inputSection}>
         <View style={styles.chatBox}>
           <TextInput
+            onChangeText={(text) => setMessage(text)}
+            value={message}
             placeholder="Type a message"
             multiline
             placeholderTextColor="#dbdbdb"
-            style={styles.message}
+            style={styles.messageInput}
           />
         </View>
         <View style={styles.sendButton}>
-          <MaterialCommunityIcons name="send" size={30} color="white" />
+          <TouchableOpacity
+            onPress={() => {
+              setChats([
+                ...chats,
+                {
+                  _id: id.toString(),
+                  user: true,
+                  msg: message,
+                },
+              ]);
+              setMessage("");
+              id = id + 1;
+            }}
+          >
+            <MaterialCommunityIcons name="send" size={30} color="white" />
+          </TouchableOpacity>
         </View>
       </View>
     </Screen>
@@ -41,7 +90,22 @@ function ChatScreen(props) {
 const styles = StyleSheet.create({
   chatSection: {
     flex: 10,
+    padding: 10,
     backgroundColor: "#ede6e6",
+  },
+  message: {
+    width: "100%",
+  },
+  messageBox: {
+    backgroundColor: "#00adfc",
+    padding: 5,
+    margin: 5,
+    maxWidth: "75%",
+    borderRadius: 10,
+  },
+  messageText: {
+    fontSize: 18,
+    color: "white",
   },
   details: {
     padding: 5,
@@ -88,7 +152,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#6b6b6b",
     width: "80%",
   },
-  message: {
+  messageInput: {
     position: "absolute",
     left: 10,
     fontSize: 20,
