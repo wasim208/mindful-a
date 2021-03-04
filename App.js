@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import * as Calendar from "expo-calendar";
 
 import Questionnaire from "./components/Questionnaire";
+import Tasks from "./components/Tasks";
 
 export default function App() {
   useEffect(() => {
@@ -14,7 +15,7 @@ export default function App() {
       }
     })();
   }, []);
-  return <Questionnaire />;
+  return <Tasks />;
 }
 
 const styles = StyleSheet.create({});
