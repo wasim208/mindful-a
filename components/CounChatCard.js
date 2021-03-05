@@ -9,10 +9,15 @@ import {
 } from "react-native";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/core";
 
 function CounChatCard({ user }) {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => navigation.navigate("DocChat")}
+    >
       <Image style={styles.profile_pic} source={user.profile}></Image>
       <View style={styles.details}>
         <Text style={styles.name}>{user.name}</Text>

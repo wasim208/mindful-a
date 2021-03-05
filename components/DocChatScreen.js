@@ -21,25 +21,20 @@ const phoneNumber = "tel:${9821634289}";
 const initialChats = [
   {
     _id: "1",
-    user: false,
-    msg: "Hello there, how can I help you?",
-  },
-  {
-    _id: "2",
     user: true,
-    msg: "Hello Doctor",
+    msg: "Hello there, how can I help you?",
   },
 ];
 
-function ChatScreen(props) {
+function DocChatScreen(props) {
   const [chats, setChats] = useState(initialChats);
   const [message, setMessage] = useState("");
   return (
     <Screen style={styles.container}>
       <View style={styles.navtigation}>
-        <Image style={styles.profile} source={require("../assets/doc_1.jpg")} />
+        <Image style={styles.profile} source={require("../assets/pat_1.jpg")} />
         <View style={styles.details}>
-          <Text style={styles.name}>Dr. Rachel Douglas</Text>
+          <Text style={styles.name}>Louella Chapman</Text>
           <Text style={styles.status}>offline</Text>
         </View>
         <TouchableOpacity
@@ -170,4 +165,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ChatScreen;
+export default DocChatScreen;

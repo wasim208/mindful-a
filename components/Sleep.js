@@ -1,21 +1,24 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
+import Screen from "./Screen";
 
 const Sleep = (navigation, check) => {
   return (
-    <View style={styles.main}>
-      <View style={styles.card}>
-        <Image
-          style={styles.image_sleep}
-          source={require("../assets/sleeping.jpg")}
-        />
-        <Text style={styles.cardtext}>
-          Adults should get as close to 8 hours of sleep per night as they can.
-          Although every individual's body differs, sleep is essential for
-          learning and improving daily productivity.
-        </Text>
+    <Screen>
+      <View style={styles.main}>
+        <View style={styles.card}>
+          <Image
+            style={styles.image_sleep}
+            source={require("../assets/sleeping.jpg")}
+          />
+          <Text style={styles.cardtext}>
+            Adults should get as close to 8 hours of sleep per night as they
+            can. Although every individual's body differs, sleep is essential
+            for learning and improving daily productivity.
+          </Text>
+        </View>
       </View>
-    </View>
+    </Screen>
   );
 };
 

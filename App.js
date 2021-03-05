@@ -17,6 +17,9 @@ import ChatScreen from "./components/ChatScreen";
 import Questionnaire from "./components/Questionnaire";
 import QuizResult from "./components/QuizResult";
 import Tasks from "./components/Tasks";
+import LoginCon from "./components/LoginCon";
+import DocHome from "./components/DocHome";
+import DocChatScreen from "./components/DocChatScreen";
 
 const Stack = createStackNavigator();
 const StackNavigator = () => (
@@ -53,6 +56,15 @@ const StackNavigator = () => (
       {(props) => <QuizResult {...props} />}
     </Stack.Screen>
     <Stack.Screen name="Tasks">{(props) => <Tasks {...props} />}</Stack.Screen>
+    <Stack.Screen name="LoginCon">
+      {(props) => <LoginCon {...props} />}
+    </Stack.Screen>
+    <Stack.Screen name="DocHome">
+      {(props) => <DocHome {...props} />}
+    </Stack.Screen>
+    <Stack.Screen name="DocChat">
+      {(props) => <DocChatScreen {...props} />}
+    </Stack.Screen>
   </Stack.Navigator>
 );
 

@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import Screen from "./Screen";
 
-const Login = ({ navigation }) => {
+const LoginCon = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   return (
@@ -21,6 +21,9 @@ const Login = ({ navigation }) => {
             style={styles.image_login}
             source={require("../assets/call_user_dr.png")}
           />
+        </View>
+        <View style={{ alignSelf: "center" }}>
+          <Text> You are logging in as a counsellor.</Text>
         </View>
         <View style={styles.buttonView}>
           <TextInput
@@ -40,7 +43,7 @@ const Login = ({ navigation }) => {
           />
           <TouchableOpacity
             style={styles.btn}
-            onPress={() => navigation.navigate("Home")}
+            onPress={() => navigation.navigate("DocHome")}
           >
             <Text style={styles.btntext}>Login</Text>
           </TouchableOpacity>
@@ -52,7 +55,7 @@ const Login = ({ navigation }) => {
                 alignItems: "center",
                 marginTop: 5,
               }}
-              onPress={() => navigation.navigate("SignupUser")}
+              onPress={() => navigation.navigate("SignupCon")}
             >
               <Text style={{ fontSize: 18, color: "dodgerblue" }}>Signup</Text>
             </TouchableOpacity>
@@ -65,12 +68,12 @@ const Login = ({ navigation }) => {
               alignSelf: "center",
             }}
           >
-            <Text style={{ fontSize: 18 }}>Are you a counsellor?</Text>
+            <Text style={{ fontSize: 18 }}>Are you a user?</Text>
             <TouchableOpacity>
               <Text
                 style={{ fontSize: 18, color: "dodgerblue" }}
                 onPress={() => {
-                  navigation.navigate("LoginCon");
+                  navigation.navigate("Login");
                 }}
               >
                 Click here
@@ -158,4 +161,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default LoginCon;
