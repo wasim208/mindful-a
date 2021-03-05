@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/core";
 import React, { useState } from "react";
 import {
   Text,
@@ -5,6 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   FlatList,
+  Alert,
 } from "react-native";
 import Screen from "./Screen";
 import TaskCard from "./TaskCard";
@@ -28,6 +30,7 @@ const initailTasks = [
 ];
 
 function Tasks(props) {
+  const navigation = useNavigation();
   const [tasks, setTasks] = useState(initailTasks);
   return (
     <Screen>
@@ -42,7 +45,17 @@ function Tasks(props) {
         />
       </View>
       <View style={styles.submit}>
-        <TouchableOpacity style={styles.submit_btn}>
+        <TouchableOpacity
+          style={styles.submit_btn}
+          onPress={() => {
+            Alert.alert("Message", "Task details sent to your counsellor", [
+              {
+                text: "Go To Home",
+                onPress: () => navigation.navigate("Home"),
+              },
+            ]);
+          }}
+        >
           <Text style={styles.submit_txt}>Submit</Text>
         </TouchableOpacity>
       </View>

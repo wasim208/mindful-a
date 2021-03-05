@@ -9,8 +9,10 @@ import {
 } from "react-native";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/core";
 
 function DoctorCard({ item }) {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Image style={styles.profile_pic} source={item.image}></Image>
@@ -18,7 +20,10 @@ function DoctorCard({ item }) {
         <Text style={styles.name}>{item.name}</Text>
         <Text style={styles.qualification}>{item.qualification}</Text>
         <Text style={styles.experience}>Experience: {item.exp}</Text>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Chat")}
+        >
           <MaterialCommunityIcons name="chat" size={20} color="white" />
           <Text style={styles.buttonText}> Chat</Text>
         </TouchableOpacity>

@@ -4,6 +4,7 @@ import { RadioButton } from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Screen from "./Screen";
+import { useNavigation } from "@react-navigation/core";
 
 const questions = [
   {
@@ -62,7 +63,8 @@ const questions = [
 
 var current_q = 1;
 
-function Questionnaire(props) {
+function Questionnaire() {
+  const navigation = useNavigation();
   const [question, setquestion] = useState(questions[0]);
   const [checked, setchecked] = useState(question.checked);
 
@@ -124,6 +126,8 @@ function Questionnaire(props) {
               current_q = current_q + 1;
               setquestion(questions[current_q - 1]);
               setchecked("");
+            } else {
+              navigation.navigate("Result");
             }
           }}
         >

@@ -7,6 +7,7 @@ import {
   TextInput,
   FlatList,
   TouchableOpacity,
+  Linking,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -14,6 +15,8 @@ import Screen from "./Screen";
 import Message from "./Message";
 
 var id = 3;
+
+const phoneNumber = "tel:${9821694289}";
 
 const initialChats = [
   {
@@ -39,12 +42,12 @@ function ChatScreen(props) {
           <Text style={styles.name}>Dr. Rachel Douglas</Text>
           <Text style={styles.status}>offline</Text>
         </View>
-        <MaterialCommunityIcons
+        <TouchableOpacity
           style={styles.phone}
-          name="phone"
-          size={30}
-          color="white"
-        />
+          onPress={() => Linking.openURL(phoneNumber)}
+        >
+          <MaterialCommunityIcons name="phone" size={30} color="white" />
+        </TouchableOpacity>
       </View>
       <View style={styles.chatSection}>
         <FlatList
