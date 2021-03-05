@@ -13,6 +13,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Screen from "./Screen";
 import Message from "./Message";
+import { useNavigation } from "@react-navigation/core";
 
 var id = 3;
 
@@ -27,6 +28,7 @@ const initialChats = [
 ];
 
 function DocChatScreen(props) {
+  const navigation = useNavigation();
   const [chats, setChats] = useState(initialChats);
   const [message, setMessage] = useState("");
   return (
@@ -42,6 +44,12 @@ function DocChatScreen(props) {
           onPress={() => Linking.openURL(phoneNumber)}
         >
           <MaterialCommunityIcons name="phone" size={30} color="white" />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.plus}
+          onPress={() => navigation.navigate("Shed")}
+        >
+          <MaterialCommunityIcons name="plus" size={40} color="white" />
         </TouchableOpacity>
       </View>
       <View style={styles.chatSection}>
@@ -118,6 +126,10 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
   },
   phone: {
+    position: "absolute",
+    right: 55,
+  },
+  plus: {
     position: "absolute",
     right: 10,
   },

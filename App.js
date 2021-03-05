@@ -20,6 +20,7 @@ import Tasks from "./components/Tasks";
 import LoginCon from "./components/LoginCon";
 import DocHome from "./components/DocHome";
 import DocChatScreen from "./components/DocChatScreen";
+import CounSched from "./components/CounSched";
 
 const Stack = createStackNavigator();
 const StackNavigator = () => (
@@ -64,6 +65,9 @@ const StackNavigator = () => (
     </Stack.Screen>
     <Stack.Screen name="DocChat">
       {(props) => <DocChatScreen {...props} />}
+    </Stack.Screen>
+    <Stack.Screen name="Shed">
+      {(props) => <CounSched {...props} />}
     </Stack.Screen>
   </Stack.Navigator>
 );
